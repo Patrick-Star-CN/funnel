@@ -2,7 +2,7 @@ name: Go
 
 on:
   push:
-    branches: [ main ]
+    branches: [ develop ]
 
 jobs:
 
@@ -51,7 +51,7 @@ jobs:
           tag_name: ${{ steps.autotagger.outputs.tagname }}
           release_name: Version ${{ steps.autotagger.outputs.version }}
           draft: false
-          prerelease: false
+          prerelease: true
 
     - name: Upload Release Asset
       id: upload-release-asset
