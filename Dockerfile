@@ -4,7 +4,7 @@ LABEL version=2.0.1
 RUN go env -w GOPROXY=https://goproxy.cn,direct
 
 COPY . $GOPATH/src/funnel/
-WORKDIR $GOPATH/src/funnel/
+WORKDIR $GOPATH/src/funnel/src/
 
 RUN go build .
 

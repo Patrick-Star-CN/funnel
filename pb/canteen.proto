@@ -1,0 +1,17 @@
+syntax = "proto3";
+package canteen;
+option go_package = ".;funnel";
+service CanteenService {
+  rpc CanteenFolw (CanteenFolwRequest) returns (CanteenFolwReply) {}
+}
+message CanteenFolwRequest {
+}
+message CanteenFolwReply {
+  string BeginTime = 1;
+  string EndTime =2;
+  message Canteen{
+    string DealCount = 1;
+    string RestaurantName=2;
+  }
+  repeated Canteen Data=3;
+}

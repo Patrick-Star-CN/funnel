@@ -1,0 +1,40 @@
+syntax = "proto3";
+package library;
+option go_package = ".;funnel";
+service LibraryService {
+  rpc LibraryCurrent (LibraryCurrentRequest) returns (LibraryCurrentReply) {}
+  rpc LibraryHistory (LibraryHistoryRequest) returns (LibraryHistoryReply) {}
+  rpc LibraryReborrow (LibraryReborrowRequest) returns (LibraryReborrowReply) {}
+}
+message Book{
+  string Name   =1;
+  string	LibraryID =2;
+  string	LibraryPlace=3; 
+  string	Time =4;
+  string	ReturnTime=5; 
+  string	RenewalsTimes=6; 
+  string	OverdueTime =7;
+}
+message LibraryCurrentRequest {
+  string Username=1;
+  string Password=2;
+}
+message LibraryCurrentReply {
+  repeated Book Books=3;
+}
+message LibraryHistoryRequest {
+  string Username=1;
+  string Password=2;
+}
+message LibraryHistoryReply {
+  repeated Book Books=3;
+}
+
+message LibraryReborrowRequest {
+  string Username=1;
+  string Password=2;
+  string LibraryID=3;
+}
+message LibraryReborrowReply {
+  bool success=1;
+}

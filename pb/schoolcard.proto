@@ -1,0 +1,46 @@
+syntax = "proto3";
+package library;
+option go_package = ".;funnel";
+service SchoolCardService {
+  rpc SchoolCardCurrent (SchoolCardCurrentRequest) returns (SchoolCardCurrentReply) {}
+  rpc SchoolCardToday (SchoolCardTodayRequest) returns (SchoolCardTodayReply) {}
+  rpc SchoolCardHistory (SchoolCardHistoryRequest) returns (SchoolCardHistoryReply) {}
+}
+
+
+message CardTransaction  {
+ string	ID =1            ;
+ string	Account=2        ;
+ string CardType=3       ;
+ string TransactionType=4;
+ string	Shop           =5;
+ string	ShopPlace      =6;
+ string Terminal       =7;
+ string Transactions   =8;
+ string	Time           =9;
+ string	Wallet        =10;
+ string	Balance       =11;
+}
+
+
+message SchoolCardCurrentRequest {
+  string Username=1;
+  string Password=2;
+}
+message SchoolCardCurrentReply {
+  string Balance = 1;
+}
+message SchoolCardTodayRequest {
+  string Username=1;
+  string Password=2;
+}
+message SchoolCardTodayReply {
+  repeated CardTransaction Transactions=1;
+}
+message SchoolCardHistoryRequest {
+  string Username=1;
+  string Password=2;
+}
+message SchoolCardHistoryReply {
+  repeated CardTransaction Transactions=1;
+}
